@@ -13,7 +13,12 @@ const authRouter = require("./auth/auth")
 primaryRouter.use('/',authRouter)
 primaryRouter.use('/public',publicRouter)
 primaryRouter.use('/private',jwt.chkToken(),privateRouter)
-
+primaryRouter.use('/privacy',(req,res)=>{
+    res.status(200).json({message:"Zero liability policy"});
+})
+primaryRouter.use('/terms',(req,res)=>{
+    res.status(200).json({message:"Zero liability policy"});
+})
 
 
 module.exports = primaryRouter;
