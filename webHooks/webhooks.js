@@ -46,6 +46,7 @@ router.post("/client", (req, res) => {
   console.log('here')
   //The Secret Matches
   if (req.headers["x-hub-signature"] == sig) {
+    console.log('should Work')
     
     exec("sh ./webHooks/updateClient.sh");
     //No Debugging Here
