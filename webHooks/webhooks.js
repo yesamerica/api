@@ -42,7 +42,8 @@ router.post("/client", (req, res) => {
       .createHmac("sha1", gitSecret)
       .update(JSON.stringify(req.body))
       .digest("hex");
-
+  
+  console.log('here')
   //The Secret Matches
   if (req.headers["x-hub-signature"] == sig) {
     
