@@ -6,7 +6,7 @@ const jwt = require('./jwt');
 //Config GitHub Auth
 const googleId = process.env.GOOGLE_CLIENT_ID;
 const googleSecret = process.env.GOOGLE_CLIENT_SECRET;
-const googleRedirect = "https://apidevnow.com/googleAuth/return";
+const googleRedirect = "https://yesamerica-api.herokuapp.com/googleAuth/return";
 
 //Bring in the userModel
 const User = require("../authModel");
