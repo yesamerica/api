@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "heroku run knex seed:run -a yesamerica-api",
+    "migrate": "heroku run knex migrate:latest -a yesamerica-api",
+    "drop": "heroku run knex migrate:rollback -a yesamerica-api"
   },
   "repository": {
     "type": "git",
