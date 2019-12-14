@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('roles',col=>{
       col.increments()
-      col.text('role')
+      col.string('role')
   })
 };
 
