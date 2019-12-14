@@ -5,9 +5,6 @@ exports.up = function(knex) {
       col.string("avatar", 200);
       col.string("fname", 30);
       col.string("lname", 30);
-      col.string("bio", 3000);
-      col.string("cohort", 20);
-      col.string("section_lead", 100);
       col
         .integer("user_id")
         .unsigned()
