@@ -4,8 +4,8 @@
   "description": "All things Behind the Scenes",
   "main": "index.js",
   "scripts": {
-    "start": "PORT=8002 node index.js",
-    "server": "PORT=8002 nodemon index.js",
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "heroku run knex seed:run -a yesamerica-api",
     "migrate": "heroku run knex migrate:latest -a yesamerica-api",
