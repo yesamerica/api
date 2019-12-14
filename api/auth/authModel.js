@@ -9,6 +9,16 @@ module.exports = {
 //Nice to declare Tables up top Yo, including sub tables
 const table = "users";
 
+async function findOrCreateByEmail(checkUser){
+  const {email,password,userRole} = checkUser
+  const user = await db(table).where({email})
+  if(user){
+    return user
+  } else{
+   const newUser = await db(table).insert({email,password})
+  }
+}
+
 function findById(id) {
   console.log(id);
   return db(table)

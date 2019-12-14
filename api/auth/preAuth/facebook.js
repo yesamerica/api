@@ -2,6 +2,7 @@ const facebookRouter = require("express").Router();
 const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const jwt = require('./jwt');
+const db = require(_dbConfig)
 
 //Config facebook Auth
 const fbId = process.env.FACEBOOK_APP_ID;
@@ -24,6 +25,7 @@ passport.use(
       enableProof: true
     },
     function(accessToken, refreshToken, profile, done) {
+
       console.log(accessToken);
       done(null, profile, accessToken);
     }
