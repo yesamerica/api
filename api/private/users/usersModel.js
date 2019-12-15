@@ -7,9 +7,11 @@ module.exports={
     editById
 }
 const table='users'
-function findAll(){
+function findAll(id){
     return db(table)
+    .where({id})
 }
+
 function findById(id){
     return db(table)
     .where({id})
