@@ -34,7 +34,6 @@ authRouter.post("/register", validateNewUser, (req, res) => {
         token_type: "Basic ",
         token: jwt.genToken(newUser)
       };
-      console.log("payload", payload);
       res.status(201).send({ message: "Welcome da the Club Yo!", ...payload });
     })
     .catch(err => res.status(400).json({ errors: err }));
@@ -42,6 +41,7 @@ authRouter.post("/register", validateNewUser, (req, res) => {
 
 //Register ->Requires{username:'',password:''}
 authRouter.post("/login", validateLogin, (req, res) => {
+
   const { password } = req.body;
   const user = req.user;
   if (user && bcrypt.compareSync(password, user.password)) {
@@ -54,8 +54,8 @@ authRouter.post("/login", validateLogin, (req, res) => {
     res.status(200).json({ message: "Login Success", ...payload });
   } else {
     res
-      .status(401)
-      .json({ errors: [{ password: "Invalid Username Or Password" }] });
+      .status(200)
+      .json({ errors: [{ email: "Invalid Username Or Password" }] });
   }
 });
 

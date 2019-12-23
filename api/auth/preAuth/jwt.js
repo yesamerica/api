@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
 const tokenTTL = process.env.TOKEN_TTL || '1d'
+const db = require(_dbConfig)
 module.exports = {
   genToken,
   chkToken,
@@ -8,11 +9,11 @@ module.exports = {
 };
 
 //Creates a new JWT Token
-function genToken(email) {
-
+function genToken(user) {
+  delete user.password
   const payload = {
     tokenType: "Basic ",
-    email
+    ...user
   };
 
   const options = {
@@ -41,9 +42,9 @@ function chkToken() {
         if (err) {
           //Needs Time Validation
           res
-            .status(401)
+            .status(200)
             .json({
-              errors: [{ token: "Invalid Token, you will need to Log back in" }]
+              errors: { token: "Invalid Token, you will need to Log back in" }
             });
         } else {
             req.user = decoded;
