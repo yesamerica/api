@@ -11,19 +11,12 @@ const table = "users";
 
 async function findOrCreateByEmail(checkUser) {
   const { email, password } = checkUser;
-  console.log(email,password)
-  const user = await db(table)
-    .where({ email })
-    .then(res => {
-      console.log("ReseGoogle", res);
-      return res
-    })
-    .catch(res => console.log("ReseGoogle", res));
-
+  console.log(checkUser)
+  const user = true
   if (user) {
     return user;
   } else {
-    const newUser = await db(table).insert({ email, password });
+    return db(table).insert({ email, password });
   }
 }
 
