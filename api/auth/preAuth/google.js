@@ -27,7 +27,7 @@ passport.use(
       findOrCreateByEmail(profile).then(res => {
         console.log(profile)
         done(null, profile, accessToken);
-      })
+      }).catch(err=>console.log(err))
     }
   )
 );
