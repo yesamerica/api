@@ -9,13 +9,21 @@ module.exports = {
 //Nice to declare Tables up top Yo, including sub tables
 const table = "users";
 
-async function findOrCreateByEmail(checkUser){
-  const {email,password,userRole} = checkUser
-  const user = await db(table).where({email})
-  if(user){
-    return user
-  } else{
-   const newUser = await db(table).insert({email,password})
+async function findOrCreateByEmail(checkUser) {
+  const { email, password } = checkUser;
+
+  const user = await db(table)
+    .where({ email })
+    .then(res => {
+      console.log("ReseGoogle", res);
+      return res
+    })
+    .catch(res => console.log("ReseGoogle", res));
+
+  if (user) {
+    return user;
+  } else {
+    const newUser = await db(table).insert({ email, password });
   }
 }
 
@@ -38,11 +46,14 @@ async function findOrCreateByEmail(email) {
   const user = await db(table)
     .where({ email })
     .first();
-    if(user){
-      return {...user,message:"Welcome Back"}
-    }else{
-      addUser({email,password:'afiou89273928309w8e093279868723hrf876t32ur874r9y87'})
-    }
+  if (user) {
+    return { ...user, message: "Welcome Back" };
+  } else {
+    addUser({
+      email,
+      password: "afiou89273928309w8e093279868723hrf876t32ur874r9y87"
+    });
+  }
 }
 
 function addUser(obj) {
