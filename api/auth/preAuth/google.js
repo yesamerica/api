@@ -24,8 +24,9 @@ passport.use(
       session: false
     },
     function(accessToken, refreshToken, profile, done) {
+      console.log(profile)
       findOrCreateByEmail(profile).then(res => {
-        console.log(profile)
+        
         done(null, profile, accessToken);
       }).catch(err=>console.log(err))
     }
