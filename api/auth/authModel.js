@@ -29,25 +29,11 @@ function findById(id) {
 }
 
 function findByEmail(email) {
-  return db(table + " as u")
-    .select("u.id", "u.email", "u.password")
+  return db(table)
     .where({ email })
     .first();
 }
 
-async function findOrCreateByEmail(email) {
-  const user = await db(table)
-    .where({ email })
-    .first();
-  if (user) {
-    return { ...user, message: "Welcome Back" };
-  } else {
-    addUser({
-      email,
-      password: "afiou89273928309w8e093279868723hrf876t32ur874r9y87"
-    });
-  }
-}
 
 function addUser(obj) {
   return db(table)
