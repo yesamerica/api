@@ -11,7 +11,7 @@ const table = "users";
 
 async function findOrCreateByEmail(checkUser) {
   const { email, password } = checkUser;
-
+  console.log(email,password)
   const user = await db(table)
     .where({ email })
     .then(res => {

@@ -12,7 +12,7 @@ module.exports = {
     },
     seeds: {
       directory: "./data/seeds"
-    }
+    },debug:true
   },
 
   staging: {
@@ -28,7 +28,7 @@ module.exports = {
     },
     seeds: {
       directory: "./data/seeds"
-    }
+    },debug:true
   },
 
   production: {
@@ -44,6 +44,6 @@ module.exports = {
     },
     seeds: {
       directory: "./data/seeds"
-    }
+    },debug:true
   }
 };
