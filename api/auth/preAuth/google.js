@@ -2,7 +2,7 @@ const googleRouter = require("express").Router();
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const jwt = require("./jwt");
-const { findOrCreate } = require("../authModel");
+const { findOrCreateByEmail } = require("../authModel");
 //Config GitHub Auth
 const googleId = process.env.GOOGLE_CLIENT_ID;
 const googleSecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -24,7 +24,7 @@ passport.use(
       session: false
     },
     function(accessToken, refreshToken, profile, done) {
-      findOrCreate(profile).then(res => {
+      findOrCreateByEmail(profile).then(res => {
         done(null, profile, accessToken);
       });
     }
