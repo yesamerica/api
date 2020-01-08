@@ -2,9 +2,10 @@ const router = require('express').Router()
 const dbModel = require('./usersModel')
 router
   .get('/',(req,res)=>{
-    
-    return dbModel.findAll(req.user.user_id)
+    console.log("CURRENT USER", req.user)
+    return dbModel.findById(req.user.id)
     .then(p=>{
+      delete p.password
       res.status(200).json({message:`SUCCESS`,...p})
     })
     .catch(e=>{res.status(404).json({message:'SOMEMESSAGE', ...e})})

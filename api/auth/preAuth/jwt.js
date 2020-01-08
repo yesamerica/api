@@ -47,6 +47,7 @@ function chkToken() {
               errors: { token: "Invalid Token, you will need to Log back in" }
             });
         } else {
+            console.log("REW",decoded)
             req.user = decoded;
             next();
         }

@@ -27,6 +27,7 @@ authRouter.post("/register", validateNewUser, (req, res) => {
   dbModel
     .addUser(user)
     .then(newUser => {
+      console.log(newUser)
       //Just to Be sure
       delete newUser.password;
       payload = {
