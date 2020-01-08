@@ -9,8 +9,6 @@ module.exports = {
 //Nice to declare Tables up top Yo, including sub tables
 const table = "users";
 
-
-
 function findById(id) {
   console.log(id);
   return db(table)
@@ -26,16 +24,20 @@ function findByEmail(email) {
     .first();
 }
 
-async function findOrCreateByEmail(email) {
-  console.log(email)
+async function findOrCreateByEmail(user) {
+  const { email } = user;
+  console.log(email);
   const user = await db(table)
     .where({ email })
     .first();
-    if(user){
-      return {...user,message:"Welcome Back"}
-    }else{
-      addUser({email,password:'afiou89273928309w8e093279868723hrf876t32ur874r9y87'})
-    }
+  if (user) {
+    return { ...user, message: "Welcome Back" };
+  } else {
+    addUser({
+      email,
+      password: "afiou89273928309w8e093279868723hrf876t32ur874r9y87"
+    });
+  }
 }
 
 function addUser(obj) {
