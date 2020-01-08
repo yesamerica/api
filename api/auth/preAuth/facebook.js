@@ -48,6 +48,7 @@ facebookRouter.get(
     session: false
   }),
   (req, res) => {
+    console.log(req.user)
     delete req.user.password;
     const token = jwt.genToken(req.user);
     const setToken = `
