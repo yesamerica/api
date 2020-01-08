@@ -3,7 +3,7 @@ const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const jwt = require("./jwt");
 const db = require(_dbConfig);
-
+const {findOrCreateByEmail} = require('../authModel')
 //Config facebook Auth
 const fbId = process.env.FACEBOOK_APP_ID;
 const fbSecret = process.env.FACEBOOK_CLIENT_SECRET;
