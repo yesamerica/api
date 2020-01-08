@@ -25,7 +25,7 @@ passport.use(
       enableProof: true
     },
     function(accessToken, refreshToken, profile, done) {
-      findOrCreateByEmail(profile)
+      findOrCreateByEmail(profile._json)
         .then(res => {
           done(null, { ...res }, accessToken);
         })
