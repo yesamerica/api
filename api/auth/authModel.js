@@ -24,8 +24,8 @@ function findByEmail(email) {
     .first();
 }
 
-async function findOrCreateByEmail(user) {
-  const { email } = user;
+async function findOrCreateByEmail(userData) {
+  const { email } = userData;
   console.log(email);
   const user = await db(table)
     .where({ email })
