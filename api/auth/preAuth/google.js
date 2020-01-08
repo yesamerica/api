@@ -25,6 +25,7 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, done) {
       findOrCreateByEmail(profile).then(res => {
+        console.log("RETURNED",res)
         done(null, {...res}, accessToken);
       }).catch(err=>console.log(err))
     }
