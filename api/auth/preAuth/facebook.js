@@ -3,7 +3,7 @@ const passport = require("passport");
 const FacebookStrategy = require("passport-facebook").Strategy;
 const jwt = require("./jwt");
 const db = require(_dbConfig);
-const {findOrCreateByEmail} = require('../authModel')
+const { findOrCreateByEmail } = require("../authModel");
 //Config facebook Auth
 const fbId = process.env.FACEBOOK_APP_ID;
 const fbSecret = process.env.FACEBOOK_CLIENT_SECRET;
@@ -48,7 +48,7 @@ facebookRouter.get(
     session: false
   }),
   (req, res) => {
-    delete req.user.password
+    delete req.user.password;
     const token = jwt.genToken(req.user);
     const setToken = `
     <script>
@@ -66,12 +66,10 @@ facebookRouter.get(
 );
 
 facebookRouter.get("/terms", (req, res) => {
-  res
-    .status(200)
-    .json({
-      message:
-        "Pretty much, we use your email to create your account, if you want to disconnect from your registration median, select forgot password and you will be switched to our local auth stratagey. If you want to nuke your account, go to settings and click the nuke button. We will do our best to protect your data, however, where there is a will there is a way. That being said, we take zeor liablity for any data breaches. Your data may be used for internal and external purposes, but, mainly to improve our product for you."
-    });
+  res.status(200).json({
+    message:
+      "Pretty much, we use your email to create your account, if you want to disconnect from your registration median, select forgot password and you will be switched to our local auth stratagey. If you want to nuke your account, go to settings and click the nuke button. We will do our best to protect your data, however, where there is a will there is a way. That being said, we take zeor liablity for any data breaches. Your data may be used for internal and external purposes, but, mainly to improve our product for you."
+  });
 });
 
 module.exports = facebookRouter;
