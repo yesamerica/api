@@ -2,12 +2,11 @@ const router = require('express').Router()
 const dbModel = require('./usersModel')
 router
   .get('/',(req,res)=>{
-    res.status(200).json({message:`SUCCESS`,...req.user})
-    // return dbModel.findAll(email)
-    // .then(p=>{
-    //   res.status(200).json({message:`SUCCESS`,...p})
-    // })
-    // .catch(e=>{res.status(404).json({message:'SOMEMESSAGE', ...e})})
+    return dbModel.findAll(email)
+    .then(p=>{
+      res.status(200).json({message:`SUCCESS`,...p})
+    })
+    .catch(e=>{res.status(404).json({message:'SOMEMESSAGE', ...e})})
 })
 router
   .get('/:id',(req,res)=>{
