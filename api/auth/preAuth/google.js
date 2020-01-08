@@ -53,7 +53,7 @@ googleRouter.get(
     session: false
   }),
   (req, res) => {
-    console.log("req");
+    console.log("req",req);
     //...So, not sure how to deal with escaping very well. R-J
     delete req.password
     const token = jwt.genToken(req);
@@ -61,7 +61,7 @@ googleRouter.get(
     <script>
       (function(){
         window.opener.postMessage('${JSON.stringify({
-          ...req,
+          req,
           token
         })}', "*");
         window.close()
