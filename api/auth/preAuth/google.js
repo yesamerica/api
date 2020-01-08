@@ -24,9 +24,7 @@ passport.use(
       session: false
     },
     function(accessToken, refreshToken, profile, done) {
-      console.log(profile)
       findOrCreateByEmail(profile).then(res => {
-        console.log(res)
         done(null, {...res}, accessToken);
       }).catch(err=>console.log(err))
     }
@@ -53,8 +51,6 @@ googleRouter.get(
     session: false
   }),
   (req, res) => {
-    console.log("req",req.user);
-    //...So, not sure how to deal with escaping very well. R-J
     delete req.user.password
     const token = jwt.genToken(req.user);
     const setToken = `
